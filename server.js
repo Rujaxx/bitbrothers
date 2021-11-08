@@ -8,7 +8,18 @@ dotenv.config({ path : "./config/config.env"})
 const connectDB = require('./config/db')
 connectDB()
 
+//Router Files
+const auth = require('./routes/auth')
+
 const app = express()
+
+//Body Parser
+app.use(express.json())
+app.use(express.urlencoded({extended : false}))
+
+//Mount routes
+app.use('/api/v1/auth',auth)
+
 
 app.get('/', (req,res) => {
     res.send('Hello Welcome to the CRUD API')
