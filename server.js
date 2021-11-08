@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const errorHandler = require('./middlewares/error')
 
 //Load ENV vars
 dotenv.config({ path : "./config/config.env"})
@@ -27,6 +28,8 @@ app.use('/api/v1/user', user)
 app.get('/', (req,res) => {
     res.send('Hello Welcome to the CRUD API')
 })
+
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 4000
 
