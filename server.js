@@ -4,6 +4,10 @@ const dotenv = require('dotenv')
 //Load ENV vars
 dotenv.config({ path : "./config/config.env"})
 
+//Connect Database
+const connectDB = require('./config/db')
+connectDB()
+
 const app = express()
 
 app.get('/', (req,res) => {
